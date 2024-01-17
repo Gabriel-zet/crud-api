@@ -6,7 +6,7 @@ import { UserCreate } from "../interfaces/users.interface";
 const router = express.Router();
 const userUseCase = new UserUseCase();
 
-router.post<{ Body: UserCreate }>('/create', async (req, res) => { // Create
+router.post<{ Body: UserCreate }>('/user', async (req, res) => { // Create
     try {
         const { name, email, password } = req.body;
 
@@ -27,7 +27,7 @@ router.post<{ Body: UserCreate }>('/create', async (req, res) => { // Create
     }
 });
 
-router.get('/view', async (req, res) => { // Read
+router.get('/user', async (req, res) => { // Read
     const email = req.body.email;
 
     try {
@@ -46,7 +46,7 @@ router.get('/teste', (req, res) => { // Init
     res.status(200).json({ hello: 'world' });
 });
 
-router.post('/update', async (req, res) => {
+router.put('/user', async (req, res) => {
     const { email, password, name, id } = req.body;
 
     try {
@@ -63,7 +63,7 @@ router.post('/update', async (req, res) => {
     }
 })
 
-router.post('/delete', async (req, res) => { // Delete
+router.delete('/user', async (req, res) => { // Delete
     const { id } = req.body
     try {
         const data = await userUseCase.delete(id)
