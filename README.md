@@ -14,7 +14,7 @@ Esta API abrange todos os fundamentos do CRUD (Create, Read, Update, Delete):
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git
+   git clone https://github.com/Gabriel-zet/crud-api.git
 
 2. Instale as Dependencias
    - **npm i**
