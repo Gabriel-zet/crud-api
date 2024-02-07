@@ -21,3 +21,48 @@ model User {
 
   @@map("users")
 }
+
+model Post {
+  id          Int         @id @default(autoincrement())
+  title       String
+  description String
+  isVisible   Boolean
+  created_at  DateTime    @default(now())
+  updated_at  DateTime    @updatedAt
+  post_video  PostVideo[] @relation("post")
+
+  @@map("posts")
+}
+
+model Video {
+  id         Int         @id @default(autoincrement())
+  title      String
+  videoUrl   String
+  post_video PostVideo[] @relation("video")
+  created_at DateTime    @default(now())
+  updated_at DateTime    @updatedAt
+
+  @@map("videos")
+}
+
+model PostVideo {
+  post       Post     @relation("post", fields: [postId], references: [id])
+  postId     Int
+  video      Video    @relation("video", fields: [videoId], references: [id])
+  videoId    Int
+  created_at DateTime @default(now())
+
+  @@id([postId, videoId])
+  @@map("post_videos")
+}
+
+model Category {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  isVisible   Boolean
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  @@map("categories")
+}

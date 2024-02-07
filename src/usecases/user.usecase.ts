@@ -21,10 +21,12 @@ export class UserUseCase {
                 select: {
                     email: true,
                     name: true,
-                    password: false
+                    password: false,
+                    role: true,
                 },
             })
             console.table(user)
+            return user;
         }
         catch (error) {
             console.error(error)
@@ -82,4 +84,5 @@ export class UserUseCase {
             console.error(error)
         }
     }
+
 }
